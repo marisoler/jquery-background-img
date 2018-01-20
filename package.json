@@ -1,0 +1,29 @@
+{
+  "name": "jquery-background-img",
+  "version": "0.0.0-development",
+  "description": "\u0016Plug-in de jquery para cambiar el fondo con imagenes random",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marisoler/jquery-background-img.git"
+  },
+  "keywords": [
+    "background\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Djquery",
+    "\u001b[C\u001b[Cpluin",
+    "cover",
+    "fullpage",
+    "unsplash"
+  ],
+  "author": "Marisol <maryer001@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marisoler/jquery-background-img/issues"
+  },
+  "homepage": "https://github.com/marisoler/jquery-background-img#readme",
+  "devDependencies": {
+    "eslint": "4.16.0"
+  }
+}
