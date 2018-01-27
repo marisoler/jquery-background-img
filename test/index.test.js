@@ -1,3 +1,4 @@
+require('dotenv').config();
 var expect = require('expect.js');
 var jsdom = require('jsdom');
 
@@ -9,8 +10,9 @@ require('../src');
 
 describe ('jquery-background-img', function(){
   var $section;
+  var clientId = process.env.CLIENT_ID;
   beforeEach(function(){
-    window.BackgroundImg.setup('5c22dc1443c6795cf30f0a25318ce56f3de05492417b40057030b6337c58de86');
+    window.BackgroundImg.setup(clientId);
     $section = $('section');
 
   });
@@ -35,7 +37,7 @@ describe ('jquery-background-img', function(){
     expect($section.css('backgroundColor')).to.be('red');
   });
   it('should set ClientId attr',function(){
-    expect(window.BackgroundImg.clientId).to.be('5c22dc1443c6795cf30f0a25318ce56f3de05492417b40057030b6337c58de86');
+    expect(window.BackgroundImg.clientId).to.be(clientId);
   });
   it('should set default image', function(){
     window.BackgroundImg.setup('123');
