@@ -1,21 +1,63 @@
+require('dotenv').config();
 var expect = require('expect.js');
 var jsdom = require('jsdom');
 
 var dom = new jsdom.JSDOM('<html><body><section></section></body></html>');
 var $ =  global.jQuery = require('jquery')(dom.window);
 
+require('jsdom-global')();
 require('../src');
 
 describe ('jquery-background-img', function(){
   var $section;
+  var clientId = process.env.CLIENT_ID;
   beforeEach(function(){
+    window.BackgroundImg.setup(clientId);
     $section = $('section');
-    $section.bgUnsplash();
+
   });
-  it('should hav a width of 100%', function(){
+  it('should hav the default values', function(){
+    $section.BackgroundImg();
     expect($section.css('width')).to.be('100%');
-  });
-  it('should hav a min height of 800px', function(){
     expect($section.css('minHeight')).to.be('800px');
+    expect($section.css('backgroundSize')).to.be('cover');
+    expect($section.css('backgroundPosition')).to.be('center');
+    expect($section.css('backgroundColor')).to.be('black');
+  });
+  it('should have the defined values', function(){
+    $section.BackgroundImg({
+      minHeight:'600px',
+      backgroundSize:'contain',
+      backgroundPosition: 'top center',
+      backgroundColor: 'red'
+    });
+    expect($section.css('minHeight')).to.be('600px');
+    expect($section.css('backgroundSize')).to.be('contain');
+    expect($section.css('backgroundPosition')).to.be('top center');
+    expect($section.css('backgroundColor')).to.be('red');
+  });
+  it('should set ClientId attr',function(){
+    expect(window.BackgroundImg.clientId).to.be(clientId);
+  });
+  it('should set default image', function(){
+    window.BackgroundImg.setup('123');
+    return $section.BackgroundImg({
+      backgroundImage: 'path/defaultImage.jpg'
+    }).catch(function($this){
+      expect($this.css('backgroundImage')).to.contain('path/defaultImage.jpg');
+    });
+  });
+
+  it('sould set an random image from unsplash', function() {
+    return $section.BackgroundImg({
+      backgroundImage: 'path/defaultImage.jpg',
+      usePromise: true
+    })
+      .then(function($this) {
+        expect($this.css('backgroundImage')).to.contain('url');
+      })
+      .catch(function($this){
+        expect($this.css('backgroundImage')).to.contain('path/defaultImage.jpg');
+      });
   });
 });
