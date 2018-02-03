@@ -1,6 +1,6 @@
 /**
  * jquery-background-img
- * @version 1.0.0
+ * @version 1.0.1
  * @author Marisol Escareño
  * @license The MIT License (MIT)
  */

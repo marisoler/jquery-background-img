@@ -1,6 +1,6 @@
 {
   "name": "jquery-background-img",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "\u0016Plug-in de jquery para cambiar el fondo con imagenes random",
   "main": "src/index.js",
   "scripts": {
