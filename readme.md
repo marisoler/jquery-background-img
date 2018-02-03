@@ -1,7 +1,7 @@
 # jquery-background-img
 ### Plug-in de jquery para cambiar el fondo con imagenes random
 #### Installation
-```
+```js
 npm install jquery-background-img
 ```
 ##### You need to load jQuery first
@@ -28,7 +28,7 @@ $(document).ready(function(){
     	minHeight: '700px', //by default it's 800px
         backgroundSize: 'contain', //by default it's cover
         backgroundPosition: 'top center', //by default it´s center
-        backgroundColor: 'red', //by default it's black
+        backgroundColor: 'black', //by default it's black
     });
 });
 ```
